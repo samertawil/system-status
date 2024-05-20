@@ -1,0 +1,34 @@
+body {
+    margin: 0;
+}
+
+#main-div {
+    background-color: #ddd;
+    margin: 100px auto;
+    width: 75%;
+    padding: 20px;
+
+}
+
+#title-div #product-p {
+    text-align: center;
+    font-size: 22px;
+
+}
+
+#details-div {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+
+
+
+}
+
+ 
+.product-div {
+    background-color: blue;
+    
+
+  
+}

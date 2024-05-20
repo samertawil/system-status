@@ -1,0 +1,64 @@
+.section {
+    background-color: #dddd;
+    width: 20%;
+    height: 350px;
+    margin: 200px auto;
+}
+
+.center-text {
+    text-align: center;
+}
+
+.login-tab {
+    font-size: 22px;
+    font-weight: bold;
+    color: orange;
+    padding-top: 20px;
+
+}
+
+ 
+
+.pass-tab, .email-tab {
+    
+    border: none;
+    padding-bottom: 10px;
+    margin-top: 10px;
+    margin-left: 20px;
+    width: 250px;
+
+}
+
+.pass-tab:focus {
+    border: none;
+    
+}
+ 
+.left-text {
+    text-align: left;
+     
+}
+
+.rerember-tab {
+   
+    margin-top: 10px;
+    margin-left: 20px;
+    
+}
+
+.login-button {
+    padding: 10px 60px;
+    margin-top: 20px;
+    background-color: orange;
+    border: 1px solid black;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.forget-tab {
+    text-decoration: underline;
+    color: blue;
+    margin-top: 20px;
+    display: inline-block;
+}

@@ -1,0 +1,19 @@
+@font-face {
+    font-family:'main_dorid_font' ;
+    src: url(../../font/Droid.Arabic.Kufi_DownloadSoftware.iR_.ttf);
+}
+ 
+body {
+    margin: 0;
+    direction: rtl;
+    font-family: 'main_dorid_font', 'Courier New', Courier, monospace !important;
+     
+}
+
+
+/* .container {
+    width: 85%;
+    margin: auto auto;
+} */
+
+
