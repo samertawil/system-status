@@ -43,10 +43,11 @@ class UserController extends Controller
     public function edit($id)
     {
          $user = User::findorfail($id);
-         $data= Http::get("http://127.0.0.1:8000/api/phone/$user->full_name");
+        //  $data= Http::get("http://127.0.0.1:8000/api/phone/$user->full_name");
          
-         $name=$data[0];
-        //   dd($name);
+        //  $name=$data[0];
+       $name= [];
+   
  
  
         $statuses = status::select('id', 'status_name', 'p_id')->where('p_id', 30)->get();

@@ -117,7 +117,7 @@
                                     </div>
 
                                     <div class="col-sm-6" id="phone_id">
-                                        <div>
+                                        {{-- <div>
                                             <div class="form-group">
                                                 @foreach ($name as $key => $value)
                                                     <input value="{{ $value }}"
@@ -130,7 +130,7 @@
                                             </div>
 
 
-                                        </div>
+                                        </div> --}}
 
 
 
