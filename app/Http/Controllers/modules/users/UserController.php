@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Http;
 
 class UserController extends Controller
 {
@@ -41,11 +42,17 @@ class UserController extends Controller
 
     public function edit($id)
     {
-        $user = User::findorfail($id);
+         $user = User::findorfail($id);
+         $data= Http::get("http://127.0.0.1:8000/api/phone/$user->full_name");
+         
+         $name=$data[0];
+        //   dd($name);
+ 
+ 
         $statuses = status::select('id', 'status_name', 'p_id')->where('p_id', 30)->get();
         $roles_group = Role::get();
         $granted_groups = role_user::select('role_id')->where('user_id', $id)->get();
-        return view('apps.modules.users.edit', compact('user', 'statuses', 'roles_group', 'granted_groups'));
+        return view('apps.modules.users.edit', compact('user', 'statuses', 'roles_group', 'granted_groups','name'));
     }
 
 
@@ -54,7 +61,7 @@ class UserController extends Controller
     {
 
         $data = User::findorfail($id);
-        
+
         $data->update([
             'full_name' => $request->full_name,
             'email' => $request->email_verified_atemail,
@@ -62,6 +69,8 @@ class UserController extends Controller
             'user_activation' => $request->user_activation,
             'user_type' => $request->user_type,
         ]);
+
+        Http::post("http://127.0.0.1:8000/api/phone?name= $request->full_name&phone=$request->phone");
 
         if (!empty($request->role_id)) {
             foreach ($request->role_id as $roles) {

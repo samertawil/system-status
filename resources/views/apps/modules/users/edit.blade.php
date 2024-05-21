@@ -21,7 +21,7 @@
 
                     @csrf
                     @method('put')
-                    
+
                     <div class="row">
                         <div class="col-sm-6">
                             <div class="form-group ">
@@ -98,19 +98,44 @@
                                     </div>
 
                                 </div>
-                                <div class="col-sm-6">
-                                    <div class="">
-                                        <div class="form-group">
-                                            <select name="user_type" class="form-control">
-                                                <option value="{{$user->user_type}}" hidden>{{$user->usertype->status_name}}</option>
-                                                @foreach ($statuses as $status)
-                                    <option value="{{$status->id }}">{{ $status->status_name }}</option>
+                                <div class="row col-sm-6">
+                                    <div class="col-sm-6">
+                                        <div class="">
+                                            <div class="form-group">
+                                                <select name="user_type" class="form-control">
+                                                    <option value="{{ $user->user_type }}" hidden>
+                                                        {{ $user->usertype->status_name }}</option>
+                                                    @foreach ($statuses as $status)
+                                                        <option value="{{ $status->id }}">{{ $status->status_name }}
+                                                        </option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+
+
+                                        </div>
+                                    </div>
+
+                                    <div class="col-sm-6" id="phone_id">
+                                        <div>
+                                            <div class="form-group">
+                                                @foreach ($name as $key => $value)
+                                                    <input value="{{ $value }}"
+                                                        @class(['form-control', 'is-invalid' => $errors->has('phone')]) disabled></input>
+                                                    @include('layouts._show_error', [
+                                                        'field_name' => 'phone',
+                                                    ])
                                                 @endforeach
-                                            </select>
+
+                                            </div>
+
+
                                         </div>
 
 
+
                                     </div>
+
                                 </div>
                             </div>
                         </div>
@@ -122,14 +147,14 @@
                                     @foreach ($granted_groups as $granted)
                     
                                 @if (in_array($granted->role_id, [$role_group->id] ?? [])) checked @endif @endforeach>
-                    
+
                                 <label for="{{ $role_group->id }}" class="form-check-label mx-4">
                                     {{ $role_group->name }}</label>
                             @endforeach
-                    
+
                         </div>
 
-                
+
 
                         @include('layouts.2button', ['name' => 'UPDATE'])
 
@@ -138,5 +163,33 @@
 
         </div>
     </div>
-   
+
+@endsection
+
+@section('js')
+
+    <script>
+        $(window).on("load", function() {
+
+            $.ajax({
+                type: 'get',
+                url: 'http://127.0.0.1:8000/api/phone/sam',
+                success: function(res) {
+
+                    res.forEach(element => {
+
+                        var card =
+                            ` <input value="${element.phone}"></input>`
+                        $('#phone_id').append(card);
+                    });
+
+                }
+
+
+            });
+
+
+        })
+    </script>
+
 @endsection
