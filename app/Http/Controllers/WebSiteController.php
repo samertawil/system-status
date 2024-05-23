@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\area;
 use App\Models\card;
+use App\Models\city;
 use App\Models\post;
 use App\Models\status;
 use App\Models\comment;
@@ -118,4 +120,15 @@ class WebSiteController extends Controller
     public function visitormail() {
         return view('apps.web-site-manage.visitor-mail.index');
     }
+
+
+    public function select2()
+     {
+        $cities=city::get();
+        $areas = area::get();
+
+        return view('select2',compact('cities','areas'));
+    }
+
+
 }
