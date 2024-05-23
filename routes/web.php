@@ -18,11 +18,6 @@ Auth::routes();
 
 
 
-Route::get('/test1',function() {
-  
-    return view('test1')  ;
-});
-
 Route::post('/test1',function(Request  $request ) {
   
     employee::create($request->all());
@@ -137,4 +132,6 @@ Route::get('admin/visitor-mail',[WebSiteController::class,'visitormail']);
 
 
 require __DIR__.'/users_permission.php';
+
+require __DIR__.'/test.php';
  

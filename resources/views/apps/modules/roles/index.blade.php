@@ -11,22 +11,27 @@
             $url = URL::current();
             $parts = explode('/', $url);
             $length = count($parts);
-
-            //   print_r ($parts[$length-1]);
-
         @endphp
 
+
         <a @class([
-            'btn btn-md btn-warning fw-bold border-0',
-            'bg-dark' => $parts[$length - 1] == 1,
+            'btn btn-md btn-info fw-bold border-0',
+            'd-none' => $parts[$length - 1] == 1,
         ]) href="{{ route('admin.roles.index', 1) }}">Trashed data</a>
 
-        <a @class([
-            'btn btn-md btn-success  fw-bold border-0',
-            'bg-dark ' => $parts[$length - 1] == 0,
-        ]) href="{{ route('admin.roles.index', 0) }}">Index</a>
+        <div @class([
+            'd-none' => $parts[$length - 1] == 0,
+        ])>
+
+            <a class="btn btn-md btn-info fw-bold border-0" @class(['btn btn-md btn-success  fw-bold border-0 ']) href="{{ route('admin.roles.index', 0) }}">Index</a>
+
+
+        </div>
+
+
 
     </div>
+
 
     @include('layouts._addNewButton', ['urlname' => 'admin/roles/create'])
 
@@ -35,7 +40,7 @@
 
 
     <div class="container">
-        <table class="table border  " id="mytable" style="direction: rtl;" >
+        <table class="table border  " id="mytable" style="direction: rtl;">
             <thead>
                 <tr>
                     <th>id</th>
@@ -50,7 +55,7 @@
                 @foreach ($roles as $role)
                     <tr>
                         <td>{{ $role->id }}</td>
-                        <td >
+                        <td>
 
                             <button type="button" class="btn fw-bold border-0 text-primary" data-toggle="modal"
                                 data-target="#Modal{{ $role->name }}" title="show abilities">

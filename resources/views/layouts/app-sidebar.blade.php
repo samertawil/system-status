@@ -19,11 +19,15 @@
             <div class="info">
                 {{-- <a href="#" class="d-block">Alexander Pierce</a> --}}
 
+                @if (Auth::check())
                 <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
-                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{ Auth::user()->full_name }}</span>
-                    <img class="img-profile rounded-circle" src="{{ asset('media/html/pic/undraw_profile.svg') }}">
-                </a>
+                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{ Auth::user()->full_name }}</span>
+                <img class="img-profile rounded-circle" src="{{ asset('media/html/pic/undraw_profile.svg') }}">
+            </a> 
+                @endif
+
+              
                 <a class="dropdown-item exit1" href="{{ route('logout') }}"
                     onclick="event.preventDefault();document.getElementById('logout-form').submit()">
                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-light exit2"></i>
