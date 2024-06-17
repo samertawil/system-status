@@ -2,13 +2,17 @@
 
 namespace App\Models;
 
-use Illuminate\Http\Request;
+use Carbon\Carbon;
+use Illuminate\Support\Str;
 
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+ 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
- 
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+
 
 class card extends BaseModel
 {
@@ -18,7 +22,8 @@ class card extends BaseModel
 
    protected $casts = [
       'card_img' => 'json',
-   ];
+      
+      ];
 
    public static function upload_file(Request $request)
    {
@@ -42,12 +47,6 @@ class card extends BaseModel
       //  $date['card_img'] =  $attchments_file;
 
       return   $attchments_file;
-   }
-
-
-   public function username()
-   {
-      return $this->hasOne(user::class, 'id', 'user_id');
    }
 
 
@@ -77,6 +76,7 @@ class card extends BaseModel
    protected static function booted() {
       static::addGlobalScope('active-cards',function(Builder $builder) {
          $builder->where('active','=','1');
+         
       });
 
    }
@@ -84,10 +84,29 @@ class card extends BaseModel
    public function statusname() {
       return $this->hasOne(status::class,'id','status_id');
    }
+
+   
+   public function username()
+   {
+      return $this->hasOne(user::class, 'id', 'user_id');
+   }
+
+
+   public function getCardtitleAttribute($value) {
+
+      return Str::upper($value);
+
+   }
+
+   public function getUseridAttribute($value) {
  
+      $data = user::select('full_name')->where('id',$value)->first();
+       
+       return  ( $data['full_name']);
+     
+   }
+
+
 }
 
 
-
- 
- 

@@ -3,6 +3,7 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Support\Str;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Builder;
@@ -44,6 +45,7 @@ class User extends Authenticatable
     static::addGlobalScope('useractivation', function ($query) {
 
       $query->where('user_activation', '1');
+  
     });
   }
 
@@ -56,5 +58,11 @@ class User extends Authenticatable
   public function usertype()
   {
     return $this->hasOne(status::class, 'id', 'user_type');
+  }
+
+  public function setEmailAttribute($value) {
+    
+     $this->attributes['email']= Str::lower($value);
+    
   }
 }

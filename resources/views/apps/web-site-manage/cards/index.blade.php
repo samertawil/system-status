@@ -36,9 +36,10 @@
                         <td>{{ $card_data->card_title }}</td>
                         <td>{{ $card_data->card_text }}</td>
                         <td>{{ $card_data->active == 1 ? 'active' : 'not active' }}</td>
-                        <td>{{ $card_data->username->full_name }}</td>
+                        <td>{{ $card_data->user_id }}</td>
                         <td>{{ $card_data->statusname->status_name }}</td>
-                        <td>{{ date('d/m/Y', strtotime($card_data->created_at)) }}</td>
+                        {{-- <td>{{ date('d/m/Y', strtotime($card_data->created_at)) }}</td> --}}
+                        <td>{{  $card_data->created_at->format('d/m/Y')  }}</td>
                         <td>
                             @if ($card_data->card_img)
                                 @foreach ($card_data->card_img as $data)

@@ -33,3 +33,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+Route::get('/t1/t1',[statusController::class,'t1']);

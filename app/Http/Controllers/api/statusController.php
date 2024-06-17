@@ -63,4 +63,8 @@ public function getsystemname($id) {
     {
         //
     }
+
+    public function t1() {
+        return response('heelo samer',200);
+    }
 }

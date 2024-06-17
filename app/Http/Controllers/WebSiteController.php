@@ -32,6 +32,7 @@ class WebSiteController extends Controller
     public function show($id)
     {
         $data = card::where('active', '1')->with(['username'])->findorfail($id);
+        // dd($data);
            
            
         return  view('web-site-public.show', compact('data'));

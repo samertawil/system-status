@@ -65,7 +65,7 @@ class UserController extends Controller
 
         $data->update([
             'full_name' => $request->full_name,
-            'email' => $request->email_verified_atemail,
+            'email' => $request->email,
             'email_verified_at' => $request->email_verified_at,
             'user_activation' => $request->user_activation,
             'user_type' => $request->user_type,

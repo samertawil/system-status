@@ -35,7 +35,7 @@
             </div>
 
             <div class="card-footer">
-                Created At : {{ $data->created_at->format('M d Y h:24') }} Created By : {{ $data->username->full_name }}
+                Created At : {{ $data->created_at->format('M d Y h:24') }} Created By : {{ $data->user_id }}
             </div>
 
         </div>

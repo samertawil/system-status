@@ -27,8 +27,7 @@
         }
     body {
         text-align:start !important;
-        /* direction: rtl; */
-        /* text-align: start; */
+
        font-family: 'Droid', 'Courier New', Courier, monospace !important;
       
     }

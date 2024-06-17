@@ -18,7 +18,7 @@ class CardsController extends Controller
     public function index()
     {   
         $cards_data = card::with(['username','statusname'])->get();
-         
+          
         return view('apps.web-site-manage.cards.index', compact('cards_data'));
     }
 

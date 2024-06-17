@@ -84,9 +84,9 @@
 
 
                                              <button class="btn btn-info btn-sm" type="button" data-bs-toggle="modal"
-                                                 id="m1" data-bs-target="#edit{{ $comment->id }}">EDIT 
-                                                  </button>
-                                            
+                                                 id="m1" data-bs-target="#edit{{ $comment->id }}">EDIT
+                                             </button>
+
                                              <div class="modal fade" id="edit{{ $comment->id }}" tabindex="-1"
                                                  aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                  <div class="modal-dialog">
@@ -99,7 +99,8 @@
 
                                                          <div class="modal-body">
                                                              <form
-                                                                 action="{{ route('user.comment.update', $comment->id) }}" method="post">
+                                                                 action="{{ route('user.comment.update', $comment->id) }}"
+                                                                 method="post">
                                                                  @csrf
                                                                  @method('put')
                                                                  <input class="form-control" name="comment" type="text"
